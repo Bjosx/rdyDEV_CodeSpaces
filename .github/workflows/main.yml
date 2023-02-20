@@ -1,0 +1,62 @@
+name: main
+on: [push]
+
+env:
+  RAILS_ENV: test
+  RACK_ENV: test
+  COVERAGE: true
+  DATABASE_HOST: 127.0.0.1
+  DATABASE_USERNAME: root
+  DATABASE_PASSWORD: password
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ROOT_HOST: "%"
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Ruby 2.6
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.6.10'
+
+    - name: Install dependencies & configure database
+      run: |
+        gem install bundler -v 1.17
+        bundle install --jobs 4 --retry 3
+        bundle exec rake db:setup
+
+    - name: Run RSpec tests
+      run: |
+        echo "### RSpec results" >> $GITHUB_STEP_SUMMARY
+        echo "This section will only list failures. For a more detailed report, see the 'rspec-results' artifact." >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
+        RUBYOPT="-W0" bundle exec rspec --format failures --format html --out tmp/rspec-results.html -b --deprecation-out tmp/rspec-deprecations.txt >> $GITHUB_STEP_SUMMARY 2>&1
+        echo '```' >> $GITHUB_STEP_SUMMARY
+    
+    - name: Save test artifacts
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: rspec-results
+        path: |
+          tmp/rspec-results.html
+          tmp/rspec-deprecations.txt
+
+    - name: Coverage
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage
+        path: coverage

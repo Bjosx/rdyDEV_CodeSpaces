@@ -1,0 +1,39 @@
+[
+    {
+      "key": "ctrl+shift+space s",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": { "text": "RUBYOPT=\"-W0\" bin/rails server\n" },
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+shift+space c",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": { "text": "RUBYOPT=\"-W0\" bin/rails console\n" },
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+shift+space g",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": { "text": "RUBYOPT=\"-W0\" bin/rails generate " },
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+shift+space d",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": { "text": "mysql\n" },
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+shift+space m",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": { "text": "RUBYOPT=\"-W0\" bin/rails db:migrate\n" },
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+shift+space i",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": { "text": "bundle install\n" },
+      "when": "terminalFocus"
+    }
+  ]
+  
