@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    volumes:
+      - ../..:/workspaces:cached
+      - ./config/my.cnf.client:/etc/mysql/my.cnf
+      # - /var/run/docker.sock:/var/run/docker.sock
+
+    depends_on:
+      - db
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    # network_mode: service:db
+
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    volumes:
+      # - mysql-data-volume:/var/lib/mysql
+      - ./config/my.cnf.server:/etc/mysql/my.cnf
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      # Your config/database.yml should use the user and password you set here,
+      # and host "db" (as that's the name of this service). You can use whatever
+      # database name you want. Use `bin/rails db:prepare` to create the database.
+      #
+      # Example:
+      #
+      #  development:
+      #    <<: *default
+      #    host: db
+      #    username: mysql
+      #    password: mysql
+      #    database: myapp_development
+
+    # Add "forwardPorts": ["3306"] to **devcontainer.json** to forward mysql locally.
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+volumes:
+  mysql-data-volume:

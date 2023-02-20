@@ -1,0 +1,5 @@
+[client]
+user=vscode
+password=vscode
+host=db
+port=3306

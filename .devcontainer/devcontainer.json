@@ -1,0 +1,73 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby-rails-postgres
+{
+  "name": "Ruby on Rails & MySQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or the host.
+  "forwardPorts": [3000],
+
+  "initializeCommand": "sudo chmod 644 .devcontainer/config --recursive",
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "bundle install && bundle e rake db:setup",
+
+  // Use 'postStartCommand' to run commands after the container is started.
+  // "postStartCommand": "wait-for-it -t 15 -s db:3306 -- echo 'MySQL has started, waiting another 5 seconds grace period.' && sleep 5 && code .",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rebornix.ruby",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-mysql",
+        "eamodio.gitlens",
+        "donjayamanne.githistory"
+      ],
+      "settings": {
+        "sqltools.connections": [
+          {
+            "name": "Development Database",
+            "driver": "MySQL",
+            "previewLimit": 50,
+            "server": "db",
+            "database": "app_development",
+            "port": 3306,
+            "username": "vscode",
+            "password": "vscode",
+            "askForPassword": false,
+            "mysqlOptions": {
+              "authProtocol": "default"
+            }
+          },
+          {
+            "name": "Test Database",
+            "driver": "MySQL",
+            "previewLimit": 50,
+            "server": "db",
+            "database": "app_test",
+            "port": 3306,
+            "username": "vscode",
+            "password": "vscode",
+            "askForPassword": false,
+            "mysqlOptions": {
+              "authProtocol": "default"
+            }
+          }
+        ],
+        "gitlens.showWelcomeOnInstall": false,
+        "gitlens.showWhatsNewAfterUpgrades": false
+      }
+    }
+  },
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  "remoteUser": "vscode"
+}
