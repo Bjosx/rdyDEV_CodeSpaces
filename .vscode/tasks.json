@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+  "presentation": {
+    "echo": false,
+    "reveal": "always",
+    "focus": false,
+    "panel": "dedicated",
+    "showReuseMessage": true
+  },
+  "tasks": [
+    {
+      "label": "Create terminals",
+      "dependsOn": [
+        "database",
+        "server",
+        "console"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "runOptions": {
+        // "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "server",
+      "type": "shell",
+      "command": "RUBYOPT=\"-W0\" bin/rails server",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "group": "rails-group"
+      }
+    },
+    {
+      "label": "console",
+      "type": "shell",
+      "command": "RUBYOPT=\"-W0\" bin/rails console",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "group": "rails-group"
+      }
+    },
+    {
+      "label": "database",
+      "type": "shell",
+      "command": "mysql -D app_development",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "group": "database-group"
+      }
+    }
+  ]
+}

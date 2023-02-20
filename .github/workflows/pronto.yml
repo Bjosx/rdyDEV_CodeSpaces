@@ -1,0 +1,31 @@
+name: Pronto
+on: [pull_request]
+
+jobs:
+  pronto:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: |
+          git fetch --no-tags --prune --depth=100 origin +refs/heads/*:refs/remotes/origin/*
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Setup Pronto
+        run: |
+          gem install octokit -v 4.25.1
+          gem install pronto pronto-brakeman pronto-flay pronto-reek
+
+      - name: Run Pronto
+        run: pronto run -f github_pr_review -c origin/${{ github.base_ref }}
+        env:
+          PRONTO_PULL_REQUEST_ID: ${{ github.event.pull_request.number }}
+          PRONTO_GITHUB_ACCESS_TOKEN: "${{ github.token }}"
