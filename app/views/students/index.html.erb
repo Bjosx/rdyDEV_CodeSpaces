@@ -1,0 +1,9 @@
+<h1>Students</h1>
+<%= will_paginate @posts %>
+<ul>
+  <% @students.each do |student| %>
+    <li>
+      <%= student.full_name %>
+    </li>
+  <% end %>
+</ul>
