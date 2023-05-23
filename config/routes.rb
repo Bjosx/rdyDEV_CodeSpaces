@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get "/students" => "students#index"
+  resources :students, only: [:index]
 end
