@@ -18,7 +18,11 @@
     </tr>
   </thead>
   <tbody>
-     <%= render partial: 'student' %>
+    <% if @students.empty? %>
+      <tr><td colspan="4" style="text-align: center;">There are no students currently in your system.</td></tr>
+    <% else %>
+      <%= render partial: 'student', collection: @students %>
+    <% end %>
   </tbody>
 </table>
 <%= will_paginate_nicely @students %>
