@@ -3,10 +3,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th width="40%">
+      <th width="32%">
         Name
       </th>
-      <th width="40%">
+      <th width="32%">
         Email
       </th>
       <th width="10%">
@@ -15,11 +15,14 @@
       <th width="10%">
         Gender
       </th>
+      <th width="16%">
+        &nbsp;
+      </th>
     </tr>
   </thead>
   <tbody>
     <% if @students.empty? %>
-      <tr><td colspan="4" style="text-align: center;">There are no students currently in your system.</td></tr>
+      <tr><td colspan="5" style="text-align: center;">There are no students to show.</td></tr>
     <% else %>
       <%= render partial: 'student', collection: @students %>
     <% end %>

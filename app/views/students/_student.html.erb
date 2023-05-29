@@ -11,4 +11,10 @@
   <td>
     <%= student.gender %>
   </td>
+  <td>
+    <div class="btn-group" role="group" aria-label="...">
+      <%= link_to "Show", student, role:"button", class: "btn btn-default" %>
+      <%= link_to "Edit", edit_student_path(student), role:"button", class: "btn btn-default" %>
+    </div>
+  </td>
 </tr>    
