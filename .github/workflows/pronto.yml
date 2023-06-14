@@ -22,7 +22,9 @@ jobs:
       - name: Setup Pronto
         run: |
           gem install octokit -v 4.25.1
-          gem install pronto pronto-brakeman pronto-flay pronto-reek
+          gem install pronto 
+          gem install pronto-brakeman -v 5.4.1
+          gem install pronto-flay pronto-reek
 
       - name: Run Pronto
         run: pronto run -f github_pr_review -c origin/${{ github.base_ref }}

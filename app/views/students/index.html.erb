@@ -1,0 +1,28 @@
+<h1>Students</h1>
+<%= will_paginate_nicely @students %>
+<table class="table">
+  <thead>
+    <tr>
+      <th width="40%">
+        Name
+      </th>
+      <th width="40%">
+        Email
+      </th>
+      <th width="10%">
+        Birth Date
+      </th>
+      <th width="10%">
+        Gender
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @students.empty? %>
+      <tr><td colspan="4" style="text-align: center;">There are no students currently in your system.</td></tr>
+    <% else %>
+      <%= render partial: 'student', collection: @students %>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate_nicely @students %>
