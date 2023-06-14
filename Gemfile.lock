@@ -36,6 +36,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.4)
+    bigdecimal (1.4.4)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.4)
@@ -48,7 +49,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
-    concurrent-ruby (1.2.0)
+    concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
     debug_inspector (1.1.0)
@@ -82,19 +83,19 @@ GEM
       less (~> 2.6.0)
       sprockets (>= 2)
     libv8 (3.16.14.19)
-    loofah (2.19.1)
+    loofah (2.21.3)
       crass (~> 1.0.2)
-      nokogiri (>= 1.5.9)
+      nokogiri (>= 1.12.0)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
       net-smtp
     mini_mime (1.1.2)
-    mini_portile2 (2.8.1)
-    minitest (5.17.0)
+    mini_portile2 (2.8.2)
+    minitest (5.18.0)
     mysql2 (0.5.5)
-    net-imap (0.3.4)
+    net-imap (0.3.6)
       date
       net-protocol
     net-pop (0.1.2)
@@ -103,10 +104,10 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nokogiri (1.13.10)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.15.2)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    racc (1.6.2)
+    racc (1.7.1)
     rack (1.6.13)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -127,8 +128,9 @@ GEM
       activesupport (>= 4.2.0, < 5.0)
       nokogiri (~> 1.6)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-html-sanitizer (1.5.0)
-      loofah (~> 2.19, >= 2.19.1)
+    rails-html-sanitizer (1.6.0)
+      loofah (~> 2.21)
+      nokogiri (~> 1.14)
     railties (4.2.11.3)
       actionpack (= 4.2.11.3)
       activesupport (= 4.2.11.3)
@@ -189,10 +191,10 @@ GEM
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
-    thor (1.2.1)
+    thor (1.2.2)
     thread_safe (0.3.6)
-    tilt (2.0.11)
-    timeout (0.3.1)
+    tilt (2.2.0)
+    timeout (0.3.2)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -210,12 +212,13 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    will_paginate (3.3.1)
+    will_paginate (4.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bigdecimal (< 2.0)
   byebug
   coffee-rails (~> 4.1.0)
   factory_bot_rails
@@ -238,4 +241,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

@@ -21,7 +21,7 @@
   // This command is the first of three (along with updateContentCommand and postCreateCommand)
   // that finalizes container setup when a dev container is created. It and subsequent commands
   // execute inside the container immediately after it has started for the first time.
-  // "onCreateCommand": "",
+  "onCreateCommand": "gem install bundler -v 1.17.3 && bundle install && wait-for-it db:3306 -t 30 && bundle exec rake db:setup || echo \"MySQL server is unresponsive.\n\"",
 
   // This command is the second of three that finalizes container setup when a dev container is
   // created. It executes inside the container after onCreateCommand whenever new content is
@@ -32,7 +32,7 @@
   // This command is the last of three that finalizes container setup when a dev container is 
   // created. It happens after updateContentCommand and once the dev container has been assigned
   // to a user for the first time.
-  "postCreateCommand": "bundle install && wait-for-it db:3306 -t 30 && bundle e rake db:setup || echo \"MySQL server is unresponsive.\n\"",
+  // "postCreateCommand": "",
 
   // Use 'postStartCommand' to run commands after the container is started.
   // "postStartCommand": "",
@@ -46,11 +46,10 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "rebornix.ruby",
+        "Shopify.ruby-lsp",
         "mtxr.sqltools",
         "mtxr.sqltools-driver-mysql",
         "eamodio.gitlens",
-        "donjayamanne.githistory",
         "connorshea.vscode-ruby-test-adapter"
       ],
       "settings": {
