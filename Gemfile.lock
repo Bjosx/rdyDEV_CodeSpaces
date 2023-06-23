@@ -49,7 +49,11 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
+<<<<<<< HEAD
+    concurrent-ruby (1.2.0)
+=======
     concurrent-ruby (1.2.2)
+>>>>>>> 1c25e1c3d374f8b69b67343aae05482b031bf6f0
     crass (1.0.6)
     date (3.3.3)
     debug_inspector (1.1.0)
@@ -83,7 +87,11 @@ GEM
       less (~> 2.6.0)
       sprockets (>= 2)
     libv8 (3.16.14.19)
+<<<<<<< HEAD
+    loofah (2.19.1)
+=======
     loofah (2.21.3)
+>>>>>>> 1c25e1c3d374f8b69b67343aae05482b031bf6f0
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -191,7 +199,11 @@ GEM
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
+<<<<<<< HEAD
+    thor (1.2.1)
+=======
     thor (1.2.2)
+>>>>>>> 1c25e1c3d374f8b69b67343aae05482b031bf6f0
     thread_safe (0.3.6)
     tilt (2.2.0)
     timeout (0.3.2)
@@ -212,7 +224,11 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+<<<<<<< HEAD
+    will_paginate (3.3.1)
+=======
     will_paginate (4.0.0)
+>>>>>>> 1c25e1c3d374f8b69b67343aae05482b031bf6f0
 
 PLATFORMS
   ruby
