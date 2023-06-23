@@ -31,7 +31,7 @@ jobs:
 
     - name: Build
       run: |
-        gem install bundler -v 1.17
+        gem install bundler -v 1.17.3
         bundle install --jobs 4 --retry 3 && bundle e rake db:setup
 
     - name: Run RSpec

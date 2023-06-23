@@ -30,6 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Used for paginating list views
 gem 'will_paginate'
 
+# Rails 4.2 cannot work with Bigdecimal 2.0. Please remove when upgrading past 4.2.
+gem 'bigdecimal', '< 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -58,4 +60,3 @@ group :test do
   
   gem 'shoulda-matchers', '~> 4.5.1'
 end
-
