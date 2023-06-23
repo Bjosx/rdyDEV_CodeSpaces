@@ -23,7 +23,7 @@
   </thead>
   <tbody>
     <% if @students.empty? %>
-      <tr><td colspan="4" class="centre-text">There are no students currently in your system.</td></tr>
+      <tr><td colspan="4" class="center-text">There are no students currently in your system.</td></tr>
     <% else %>
       <%= render partial: 'student', collection: @students %>
     <% end %>
