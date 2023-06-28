@@ -9,10 +9,13 @@ gem 'mysql2', '>= 0.3.13', '< 0.6.0'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+
+#For setting up stylesheets
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
 gem 'faker'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -22,7 +25,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# Used for paginating list views
+gem 'will_paginate'
 
+# Rails 4.2 cannot work with Bigdecimal 2.0. Please remove when upgrading past 4.2.
+gem 'bigdecimal', '< 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -51,4 +58,3 @@ group :test do
   
   gem 'shoulda-matchers', '~> 4.5.1'
 end
-
