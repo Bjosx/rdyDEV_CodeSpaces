@@ -20,7 +20,7 @@ RSpec.describe WillPaginateHelper do
       end
 
       it "does not set any other pages as active" do
-        expect(helper.will_paginate_nicely(students).scan("<li class=\"active\">").size).to be eq(1)
+        expect(helper.will_paginate_nicely(students).scan("<li class=\"active\">").size).to eq(1)
       end
 
       it "includes a divider (...)" do
